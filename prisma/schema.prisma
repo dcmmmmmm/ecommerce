@@ -50,18 +50,20 @@ model User {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   name           String
   email          String   @unique
-  emailVerified  DateTime
-  image          String
+  // emailVerified  DateTime
+  // image          String
   hashedPassword String
   role           UserRole @default(USER)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
-  accounts Account[]
-  sessions Session[]
+  // accounts Account[]
+  // sessions Session[]
   products Products[]
   supplier SuppliersProfile?
   // Profile  Profile?
+  Account  Account[]
+  Session  Session[]
 }
 
 model SuppliersProfile {
@@ -69,6 +71,7 @@ model SuppliersProfile {
   name                     String
   email                    String
   phoneNumber              String
+  imageUrl                 String
   address                  String
   notes                    String?
   contactPerson            String?

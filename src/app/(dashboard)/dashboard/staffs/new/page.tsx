@@ -9,6 +9,7 @@ import FormHeader from "@/components/dashboard/FormHeader";
 import { Button } from "@/components/ui/button";
 import { makePostRequest } from "@/lib/apiRequest";
 import { generateSlug } from "@/lib/generateSlug";
+import { generateInitials } from "@/lib/generateUserCode";
 import { Plus, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -31,8 +32,10 @@ export default function NewStaffPage() {
   }
   async function onSubmit(data: any) {
     const slug = generateSlug(data.title);
+    const code = generateInitials(data.name);
     data.slug = slug;
     data.imageUrl = imageUrl;
+    data.code = code;
     console.log(data);
     makePostRequest(setIsLoading, "api/staffs", data, "Staff", reset, redirect);
     setImageUrl("");

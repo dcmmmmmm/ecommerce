@@ -2,12 +2,13 @@ import prisma from "@/lib/prismadb";
 import { NextResponse, NextRequest } from "next/server";
 export async function POST(request: NextRequest) {
   try {
-    const {name, email, phoneNumber, address, notes, contactPerson, contactPersonPhoneNumber, profileImageUrl, terms, isActive} = await request.json();
+    const {name, email, phoneNumber, imageUrl, address, notes, contactPerson, contactPersonPhoneNumber, profileImageUrl, terms, isActive} = await request.json();
     const newSupplier = prisma.suppliersProfile.create({
       data:{
         name :name, 
         email: email, 
         phoneNumber: phoneNumber, 
+        imageUrl: imageUrl,
         address: address, 
         notes: notes, 
         contactPerson: contactPerson, 
